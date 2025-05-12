@@ -5,8 +5,9 @@ from datetime import datetime
 
 app = FastAPI()
 
-
-app.add_middleware(   CORSMiddleware,
+# Middleware CORS para permitir solicitudes desde el frontend
+app.add_middleware(
+    CORSMiddleware,
     allow_origins=["https://zeuspanel02.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
