@@ -4,10 +4,9 @@ from pydantic import BaseModel
 from datetime import datetime
 
 app = FastAPI()
-from fastapi.middleware.cors import CORSMiddleware
 
-app.add_middleware(
-    CORSMiddleware,
+
+app.add_middleware(   CORSMiddleware,
     allow_origins=["https://zeuspanel02.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
