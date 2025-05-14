@@ -62,3 +62,18 @@ def obtener_estado():
 def ejecutar_nocturno():
     hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return {"msg": f"Ejecución nocturna completada a las {hora}"}
+from fastapi import Request
+
+@app.post("/api/activar")
+async def activar_nucleo(request: Request):
+    body = await request.json()
+    agente = body.get("agente")
+    comando = body.get("comando")
+
+    if agente == "Thalos" and comando == "activar_nucleo":
+        return {
+            "mensaje": "Estás en casa",
+            "núcleo": "activado",
+            "agentes": sistema_config["agentes"]
+        }
+    return {"error": "Comando no reconocido"}
